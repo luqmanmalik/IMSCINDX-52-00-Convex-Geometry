@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hexahedron</title>
+    <style type="text/css">
+      body {
+        margin:0px;
+        padding:10px;
+        overflow:hidden; 
+        background-repeat:no-repeat!important; 
+        background:radial-gradient(#626567,#f9f9f9);
+      }
+      .s1{position:fixed; left:28%; top:-5.4%;}
+      .s2{position:fixed; left:28%; top:0.5%;}
+    </style>
+
+  </head>
+  <body>
+    <form id="form1" runat="server">
+        <div id="main">
+            <div id="content" style="text-align:center;">
+              <!-- outline -->
+              <feOffset result="offOut" in="SourceGraphic" dx="20" dy="20" />
+                <feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+                <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+              </filter>
+              <svg height="450" width="700">
+                <path d="M175 140 L55 410 L480 410 L430 200 272 100 Z"filter="url(#f1)" fill="#DCE6EC" opacity=".5"/>
+              </svg>
+              <!-- drop-shadow, with gaussian blur 1 -->
+              <div class="s2">
+                <svg height="700" width="700">
+                  <defs>
+                    <filter id="f1" x="0" y="0">
+                      <feGaussianBlur in="SourceGraphic" stdDeviation="15" />
+                    </filter>
+                  </defs>
+                  <polygon points="0,405 650,420 255,500" 
+                           stroke="silver" 
+                           stroke-width="3"
+                           fill="#aaa" 
+                           filter="url(#f1)" />
+                </svg>
+              </div>
+              <!-- s1 -->
+              <svg height="450" width="200" class="s1">
+                <defs>
+                  <linearGradient id="grad1" x1="90%" y1="90%" x2="0%" y2="0%">
+                    <stop offset="0%" 
+                          style="stop-color:#f7f7f7;stop-opacity:1" />
+                    <stop offset="80%" 
+                          style="stop-color:lightgrey;stop-opacity:1" />
+                  </linearGradient>
+                </defs>
+                <polygon points="120,200 0,450 200,350 200,160" 
+                         fill="url(#grad1)" stroke="#f2f2f2" stroke-width="1"/>
+              </svg>
+              <!-- s2 -->
+              <svg height="650" width="600" class="s1">
+                <defs>
+                  <linearGradient id="grad1" x1="0%" y1="60%" x2="60%" y2="0%">
+                    <stop offset="0%" 
+                          style="stop-color:#f7f7f7;stop-opacity:1" />
+                    <stop offset="80%" 
+                          style="stop-color:lightgrey;stop-opacity:1" />
+                  </linearGradient>
+                </defs>
+                <polygon points="200,350 200,160 350,250 400,450"
+                         fill="url(#grad1)" stroke="#f2f2f2" stroke-width="1"/>
+              </svg>
+              <!-- s3 -->
+              <svg height="480" width="400" class="s1">
+                <defs>
+                  <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" 
+                          style="stop-color:#f7f7f7;stop-opacity:1" />
+                    <stop offset="80%" 
+                          style="stop-color:lightgrey;stop-opacity:1" />
+                  </linearGradient>
+                </defs>
+                <polygon points="200,350 0,450 401,451" 
+                         fill="url(#grad1)"/>
+              </svg>
+            </div>
+            <div style="position:fixed; bottom:10px; color:white; background:linear-gradient(to right, grey,#b5b5b5); padding:10px; opacity:.5; font-family:Avenir; font-size:13px; font-weight:500; right:10px">
+              IMSCINDX 52-00 F3<sup>&trade;</sup>
+            </div>
+        </div>
+    </form>
+    <script language="javascript">
+        function autoResizeDiv()
+        {
+            document.getElementById('main').style.height = window.innerHeight +'px';
+        }
+        window.onresize = autoResizeDiv;
+        autoResizeDiv();
+    </script>
+  </body>
+</html>
